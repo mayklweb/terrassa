@@ -67,7 +67,7 @@
       }
 
       // First panorama
-      panorama = new PANOLENS.ImagePanorama("media/15.webp");
+      panorama = new PANOLENS.ImagePanorama("media/1.webp");
       panorama.addEventListener("progress", onProgress);
       panorama.addEventListener("enter", onEnter);
 
@@ -129,7 +129,7 @@
       panorama15.addEventListener("enter", onEnter);
 
       // Linking panoramas
-      // panorama.link(panorama2, new THREE.Vector3(4000, 160, 360));
+      panorama.link(panorama2, new THREE.Vector3(4000, 160, 360));
 
       panorama2.link(panorama3, new THREE.Vector3(-300, 800, -3800));
 
@@ -172,13 +172,7 @@
       panorama14.link(panorama15, new THREE.Vector3(100, -100, 1800));
 
       
-      panorama.link(panorama14, new THREE.Vector3(-1900, -100, 600));
-
-
-
-
-
-
+      panorama15.link(panorama14, new THREE.Vector3(-1900, -100, 600));
 
 
       viewer = new PANOLENS.Viewer();
