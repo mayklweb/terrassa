@@ -1,180 +1,36 @@
+let data = [
+  { id: 1, image: "./foods/61.jpg" },
+  { id: 1, image: "./foods/62.jpg" },
+  { id: 1, image: "./foods/63.jpg" },
+  { id: 1, image: "./foods/64.jpg" },
+  { id: 1, image: "./foods/65.jpg" },
+  { id: 1, image: "./foods/66.jpg" },
+  { id: 1, image: "./foods/67.jpg" },
+  { id: 1, image: "./foods/68.jpg" },
+  { id: 1, image: "./foods/70.jpg" },
+  { id: 1, image: "./foods/71.jpg" },
+  { id: 1, image: "./foods/72.jpg" },
+  { id: 1, image: "./foods/73.jpg" },
+  { id: 1, image: "./foods/74.jpg" },
+];
 
+const menuBtn = document.querySelector(".menu-btn");
+const menu = document.querySelector(".menu");
+const menuContainer = document.querySelector(".menu-container");
+const header = document.querySelector(".header");
 
-let viewer,
-progress,
-progressElement,
-panorama1,
-panorama2,
-panorama3,
-panorama4,
-panorama5,
-panorama6,
-panorama7,
-panorama8,
-panorama9,
-panorama10,
-panorama11,
-panorama12,
-panorama13,
-panorama14,
-panorama15,
-panorama16,
-currentPanorama,
-interval;
-
-progressElement = document.getElementById("progress");
-
-function onEnter(event) {
-progressElement.style.width = 0;
-progressElement.classList.remove("finish");
-}
-
-function onProgress(event) {
-progress = (event.progress.loaded / event.progress.total) * 100;
-progressElement.style.width = progress + "%";
-console.log();
-
-if (progress === 100) {
-  progressElement.classList.add("finish");
-}
-}
-
-panorama1 = new PANOLENS.ImagePanorama("media/16.webp");
-panorama1.addEventListener("progress", onProgress);
-panorama1.addEventListener("enter", onEnter);
-
-panorama2 = new PANOLENS.ImagePanorama("media/15.webp");
-panorama2.addEventListener("progress", onProgress);
-panorama2.addEventListener("enter", onEnter);
-
-panorama3 = new PANOLENS.ImagePanorama("media/14.webp");
-panorama3.addEventListener("progress", onProgress);
-panorama3.addEventListener("enter", onEnter);
-
-panorama4 = new PANOLENS.ImagePanorama("media/13.webp");
-panorama4.addEventListener("progress", onProgress);
-panorama4.addEventListener("enter", onEnter);
-
-panorama5 = new PANOLENS.ImagePanorama("media/12.webp");
-panorama5.addEventListener("progress", onProgress);
-panorama5.addEventListener("enter", onEnter);
-
-panorama6 = new PANOLENS.ImagePanorama("media/11.webp");
-panorama6.addEventListener("progress", onProgress);
-panorama6.addEventListener("enter", onEnter);
-
-panorama7 = new PANOLENS.ImagePanorama("media/10.webp");
-panorama7.addEventListener("progress", onProgress);
-panorama7.addEventListener("enter", onEnter);
-
-panorama8 = new PANOLENS.ImagePanorama("media/9.webp");
-panorama8.addEventListener("progress", onProgress);
-panorama8.addEventListener("enter", onEnter);
-
-panorama9 = new PANOLENS.ImagePanorama("media/8.webp");
-panorama9.addEventListener("progress", onProgress);
-panorama9.addEventListener("enter", onEnter);
-
-panorama10 = new PANOLENS.ImagePanorama("media/7.webp");
-panorama10.addEventListener("progress", onProgress);
-panorama10.addEventListener("enter", onEnter);
-
-panorama11 = new PANOLENS.ImagePanorama("media/6.webp");
-panorama11.addEventListener("progress", onProgress);
-panorama11.addEventListener("enter", onEnter);
-
-panorama12 = new PANOLENS.ImagePanorama("media/5.webp");
-panorama12.addEventListener("progress", onProgress);
-panorama12.addEventListener("enter", onEnter);
-
-panorama13 = new PANOLENS.ImagePanorama("media/4.webp");
-panorama13.addEventListener("progress", onProgress);
-panorama13.addEventListener("enter", onEnter);
-
-panorama14 = new PANOLENS.ImagePanorama("media/3.webp");
-panorama14.addEventListener("progress", onProgress);
-panorama14.addEventListener("enter", onEnter);
-
-panorama15 = new PANOLENS.ImagePanorama("media/2.webp");
-panorama15.addEventListener("progress", onProgress);
-panorama15.addEventListener("enter", onEnter);
-
-panorama16 = new PANOLENS.ImagePanorama("media/1.webp");
-panorama16.addEventListener("progress", onProgress);
-panorama16.addEventListener("enter", onEnter);
-
-// Linking panoramas
-panorama16.link(panorama15, new THREE.Vector3(4000, 160, 360));
-
-panorama15.link(panorama14, new THREE.Vector3(-300, 800, -3800));
-panorama15.link(panorama16, new THREE.Vector3(1800, -100, 200));
-
-panorama14.link(panorama13, new THREE.Vector3(-2500, 400, 1400));
-panorama14.link(panorama15, new THREE.Vector3(-2400, -1000, 300));
-
-panorama13.link(panorama9, new THREE.Vector3(550, -200, 1800));
-panorama13.link(panorama7, new THREE.Vector3(-800, 550, -2400));
-panorama13.link(panorama12, new THREE.Vector3(-2000, -200, 1100));
-panorama13.link(panorama14, new THREE.Vector3(0, -800, -2200));
-
-panorama12.link(panorama11, new THREE.Vector3(1100, 0, -2600));
-panorama12.link(panorama13, new THREE.Vector3(-3000, 0, 1000));
-
-panorama11.link(panorama10, new THREE.Vector3(2400, 100, -800));
-panorama11.link(panorama12, new THREE.Vector3(-2600, 0, 600));
-
-panorama10.link(panorama11, new THREE.Vector3(-1400, 0, 100));
-
-panorama9.link(panorama8, new THREE.Vector3(-3000, -100, 500));
-panorama9.link(panorama13, new THREE.Vector3(2200, 0, -400));
-
-panorama8.link(panorama9, new THREE.Vector3(-3000, -100, 200));
-
-panorama7.link(panorama13, new THREE.Vector3(-2400, -800, 900));
-panorama7.link(panorama6, new THREE.Vector3(-2200, 800, 1800));
-
-panorama6.link(panorama7, new THREE.Vector3(50, -800, -1800));
-panorama6.link(panorama5, new THREE.Vector3(-2200, -100, 0));
-panorama6.link(panorama3, new THREE.Vector3(-600, -100, 2200));
-
-panorama5.link(panorama4, new THREE.Vector3(2400, -100, -400));
-panorama5.link(panorama6, new THREE.Vector3(-400, -100, -2200));
-
-panorama4.link(panorama5, new THREE.Vector3(-1100, -100, -1800));
-panorama4.link(panorama3, new THREE.Vector3(1800, -100, 600));
-
-panorama3.link(panorama6, new THREE.Vector3(500, -100, -1800));
-panorama3.link(panorama4, new THREE.Vector3(-1400, -100, -700));
-panorama3.link(panorama2, new THREE.Vector3(100, -100, 1800));
-
-panorama2.link(panorama3, new THREE.Vector3(-1900, -100, 600));
-
-panorama1.link(panorama3, new THREE.Vector3(-1900, -100, 600));
-
-viewer = new PANOLENS.Viewer({ output: "console" });
-viewer.add(
-panorama1,
-panorama2,
-panorama3,
-panorama4,
-panorama5,
-panorama6,
-panorama7,
-panorama8,
-panorama9,
-panorama10,
-panorama11,
-panorama12,
-panorama13,
-panorama14,
-panorama15,
-panorama16
-);
-
-document.querySelectorAll("div").forEach((div) => {
-if (getComputedStyle(div).height === "44px") {
-  div.style.display = "none";
-  div.style.opacity = 0
-  div.style.visibility = "hidden"
-}
+menuBtn.addEventListener("click", () => {
+  menu.classList.toggle("open");
+  header.classList.toggle("active");
 });
+
+// Rasm divlarini yaratish va qo‘shish
+let imgDivs = data
+  .map(({ image }) => {
+    return `<div class='menu-img'>
+      <img src="${image}" alt="Food Image" />
+    </div>`;
+  })
+  .join(""); // String qilib birlashtiramiz
+
+menuContainer.innerHTML = imgDivs;
