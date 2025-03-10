@@ -1,3 +1,6 @@
+
+
+
 let viewer,
   progress,
   progressElement,
@@ -35,6 +38,8 @@ viewer = new PANOLENS.Viewer({
   autoRotateSpeed: 0.4,
   cameraFov: 80,
   controlBar: false,
+  autoHideInfospot: false,
+  backgroundColor: new THREE.Color(0xffffff) // Oq rang
 });
 
 function transitionToPanorama(nextPanorama) {
@@ -63,28 +68,6 @@ function transitionToPanorama(nextPanorama) {
   });
 }
 
-// function onEnter(panorama) {
-//   let startFov = 40; // Boshlang'ich FOV
-//   let endFov = 90; // Zoom qilganda FOV
-//   let duration = 1000; // 1 soniya ichida zoom
-
-//   let startTime = performance.now();
-
-//   function animateZoom(time) {
-//     let progress = (time - startTime) / duration;
-//     if (progress < 1) {
-//       viewer.camera.fov = startFov - (startFov - endFov) * progress;
-//       viewer.camera.updateProjectionMatrix();
-//       requestAnimationFrame(animateZoom);
-//     } else {
-//       viewer.camera.fov = endFov;
-//       viewer.camera.updateProjectionMatrix();
-//     }
-//   }
-
-//   requestAnimationFrame(animateZoom);
-// }
-
 function onEnter(panorama) {
   transitionToPanorama(panorama);
 }
@@ -93,8 +76,6 @@ function lookAtDoor(x, y, z) {
   let target = new THREE.Vector3(x, y, z);
   viewer.tweenControlCenter(target, 1000); // 1 sekundda harakatlanadi
 }
-
-
 
 function onProgress(event) {
   progress = (event.progress.loaded / event.progress.total) * 100;
@@ -283,8 +264,8 @@ viewer.add(
   panorama16
 );
 
-document.querySelectorAll("div").forEach((div) => {
-  if (getComputedStyle(div).height === "44px") {
-    div.style.display = "none";
-  }
-});
+// document.querySelectorAll("div").forEach((div) => {
+//   if (getComputedStyle(div).height === "44px") {
+//     div.style.display = "none";
+//   }
+// });
