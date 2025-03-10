@@ -1,7 +1,7 @@
 let data = [
-  { id: 1, image: "./foods/61.webp", name: "Chechivichniy sup" },
-  { id: 1, image: "./foods/62.webp", name: "Chechivichniy sup" },
-  { id: 1, image: "./foods/63.webp", name: "Chechivichniy sup" },
+  { id: 1, image: "./foods/61.webp", name: "Lentil soup" },
+  { id: 1, image: "./foods/62.webp", name: "Tschetschenisch-Suppe" },
+  { id: 1, image: "./foods/63.webp", name: "Чечивичний суп" },
   { id: 1, image: "./foods/64.webp", name: "" },
   { id: 1, image: "./foods/65.webp", name: "" },
   { id: 1, image: "./foods/66.webp", name: "" },
@@ -32,7 +32,7 @@ let imgDivs = data
   .map(({ image, name }) => {
     return `<div class="menu-item">
     <div class='menu-img'>
-      <img loading="lazy" src="${image}" alt="Food Image" />
+      <img src="${image}" alt="Food Image" />
       </div>
       <p class="menu-name">${name}</p>
     </div>`;
