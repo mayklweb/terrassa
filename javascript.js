@@ -20,19 +20,22 @@ let viewer,
   currentPanorama,
   interval;
 
-
 window.onload = function () {
   let element = document.getElementById("progress");
   if (element) {
-      element.style.display = "block"; // Xatolikni oldini olish
+    element.style.display = "block"; // Xatolikni oldini olish
   } else {
-      console.error("Element topilmadi!");
+    console.error("Element topilmadi!");
   }
 };
 
-
-
-viewer = new PANOLENS.Viewer();
+viewer = new PANOLENS.Viewer({
+  output: "console",
+  autoRotate: true,
+  autoRotateSpeed: 0.4,
+  cameraFov: 80,
+  controlBar: false,
+});
 
 function transitionToPanorama(nextPanorama) {
   let duration = 800;
@@ -60,8 +63,6 @@ function transitionToPanorama(nextPanorama) {
   });
 }
 
-// }
-
 // function onEnter(panorama) {
 //   let startFov = 40; // Boshlang'ich FOV
 //   let endFov = 90; // Zoom qilganda FOV
@@ -88,6 +89,13 @@ function onEnter(panorama) {
   transitionToPanorama(panorama);
 }
 
+function lookAtDoor(x, y, z) {
+  let target = new THREE.Vector3(x, y, z);
+  viewer.tweenControlCenter(target, 1000); // 1 sekundda harakatlanadi
+}
+
+
+
 function onProgress(event) {
   progress = (event.progress.loaded / event.progress.total) * 100;
 
@@ -97,67 +105,116 @@ function onProgress(event) {
 
 panorama1 = new PANOLENS.ImagePanorama("media/16.webp");
 panorama1.addEventListener("progress", onProgress);
-panorama1.addEventListener("enter", () => onEnter(panorama1));
+panorama1.addEventListener("enter", () => {
+  onEnter(panorama1);
+  lookAtDoor(100, 0, 0); 
+});
 
 panorama2 = new PANOLENS.ImagePanorama("media/15.webp");
 panorama2.addEventListener("progress", onProgress);
-panorama2.addEventListener("enter", () => onEnter(panorama2));
+panorama2.addEventListener("enter", () => {
+  onEnter(panorama2);
+  lookAtDoor(100, 0, 0); 
+});
+panorama2.lookAt(new THREE.Vector3(0, 0, 0));
 
 panorama3 = new PANOLENS.ImagePanorama("media/14.webp");
 panorama3.addEventListener("progress", onProgress);
-panorama3.addEventListener("enter", () => onEnter(panorama3));
+panorama3.addEventListener("enter", () => {
+  onEnter(panorama3);
+  lookAtDoor(-2126.49, 0, -4516.60); 
+});
 
 panorama4 = new PANOLENS.ImagePanorama("media/13.webp");
 panorama4.addEventListener("progress", onProgress);
-panorama4.addEventListener("enter", onEnter);
+panorama4.addEventListener("enter", () => {
+  onEnter(panorama4);
+  lookAtDoor(-4276.07, 0, -2580.95); 
+});
 
 panorama5 = new PANOLENS.ImagePanorama("media/12.webp");
 panorama5.addEventListener("progress", onProgress);
-panorama5.addEventListener("enter", onEnter);
+panorama5.addEventListener("enter",  () => {
+  onEnter(panorama5);
+  lookAtDoor(-4599.23, 15.22, 1949.96); 
+});
 
 panorama6 = new PANOLENS.ImagePanorama("media/11.webp");
 panorama6.addEventListener("progress", onProgress);
-panorama6.addEventListener("enter", onEnter);
+panorama6.addEventListener("enter",  () => {
+  onEnter(panorama6);
+  lookAtDoor(-3665.77, 0, 3388.24); 
+});
 
 panorama7 = new PANOLENS.ImagePanorama("media/10.webp");
 panorama7.addEventListener("progress", onProgress);
-panorama7.addEventListener("enter", onEnter);
+panorama7.addEventListener("enter",  () => {
+  onEnter(panorama7);
+  lookAtDoor(4416.09, 0, -2326.16); 
+});
 
 panorama8 = new PANOLENS.ImagePanorama("media/9.webp");
 panorama8.addEventListener("progress", onProgress);
-panorama8.addEventListener("enter", onEnter);
+panorama8.addEventListener("enter",  () => {
+  onEnter(panorama8);
+  lookAtDoor(4782.37, 0, -1426.88); 
+});
 
 panorama9 = new PANOLENS.ImagePanorama("media/8.webp");
 panorama9.addEventListener("progress", onProgress);
-panorama9.addEventListener("enter", onEnter);
+panorama9.addEventListener("enter",  () => {
+  onEnter(panorama9);
+  lookAtDoor(-4886.30, 0, 832.50); 
+});
 
 panorama10 = new PANOLENS.ImagePanorama("media/7.webp");
 panorama10.addEventListener("progress", onProgress);
-panorama10.addEventListener("enter", onEnter);
+panorama10.addEventListener("enter",  () => {
+  onEnter(panorama10);
+  lookAtDoor(4929.88, 0, -769.88); 
+});
 
 panorama11 = new PANOLENS.ImagePanorama("media/6.webp");
 panorama11.addEventListener("progress", onProgress);
-panorama11.addEventListener("enter", onEnter);
+panorama11.addEventListener("enter",  () => {
+  onEnter(panorama11);
+  lookAtDoor(4725.29, 0, -1600.27); 
+});
 
 panorama12 = new PANOLENS.ImagePanorama("media/5.webp");
 panorama12.addEventListener("progress", onProgress);
-panorama12.addEventListener("enter", onEnter);
+panorama12.addEventListener("enter",  () => {
+  onEnter(panorama12);
+  lookAtDoor(1944.63, 0, -4572.49); 
+});
 
 panorama13 = new PANOLENS.ImagePanorama("media/4.webp");
 panorama13.addEventListener("progress", onProgress);
-panorama13.addEventListener("enter", onEnter);
+panorama13.addEventListener("enter",  () => {
+  onEnter(panorama13);
+  lookAtDoor(-1500.65, 0, 4751.38); 
+});
 
 panorama14 = new PANOLENS.ImagePanorama("media/3.webp");
 panorama14.addEventListener("progress", onProgress);
-panorama14.addEventListener("enter", onEnter);
+panorama14.addEventListener("enter",  () => {
+  onEnter(panorama14);
+  lookAtDoor(-4581.10, 0, 1648.95); 
+});
 
 panorama15 = new PANOLENS.ImagePanorama("media/2.webp");
 panorama15.addEventListener("progress", onProgress);
-panorama15.addEventListener("enter", onEnter);
+panorama15.addEventListener("enter",  () => {
+  onEnter(panorama15);
+  lookAtDoor(0, 0, -500); 
+});
 
 panorama16 = new PANOLENS.ImagePanorama("media/1.webp");
 panorama16.addEventListener("progress", onProgress);
-panorama16.addEventListener("enter", onEnter);
+panorama16.addEventListener("enter",  () => {
+  onEnter(panorama16);
+  lookAtDoor(0, 0, -500); 
+});
 
 // Linking panoramas
 panorama16.link(panorama15, new THREE.Vector3(4000, 160, 360));
@@ -226,8 +283,8 @@ viewer.add(
   panorama16
 );
 
-// document.querySelectorAll("div").forEach((div) => {
-//   if (getComputedStyle(div).height === "44px") {
-//     div.style.display = "none"; /* yoki inline, flex */
-//   }
-// });
+document.querySelectorAll("div").forEach((div) => {
+  if (getComputedStyle(div).height === "44px") {
+    div.style.display = "none";
+  }
+});
