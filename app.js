@@ -100,8 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
   menuContainer.addEventListener("click", (event) => {
     const button = event.target.closest(".meal-item_btn");
     if (button) {
-      console.log(button);
-
       const itemId = button.getAttribute("data-id");
       const selectedItem = data.find((item) => item.id == itemId);
       if (selectedItem) {
@@ -118,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
   <div class="modal-bg"></div>
   <div class="modal-content">
     <div class="modal-img">
-      <button class="modal-close">✖</button>
+      <button class="modal-close"> ${closeIcon}</button>
       <img src="${item.img}" alt="${item.name}" />
     </div>
     <div class="modal-text">
