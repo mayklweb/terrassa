@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const button = event.target.closest(".meal-item_btn");
     if (button) {
       console.log(button);
-      
+
       const itemId = button.getAttribute("data-id");
       const selectedItem = data.find((item) => item.id == itemId);
       if (selectedItem) {
@@ -124,11 +124,16 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="modal-text">
       <h2 class="modal-name">${item.name}</h2>
       <ul class="modal-ingredients">
-        <li>Ingredient 1</li>
-        <li>Ingredient 2</li>
-        <li>Ingredient 3</li>
-        <li>Ingredient 4</li>
-        <li>Ingredient 5</li>
+        <li> 50 граммов красной чечевицы </li>
+        <li>20 граммов лука</li>
+        <li>12.5 граммов картофеля</li>
+        <li>I25 граммов моркови</li>
+        <li>0.34 столовой ложки томатной пасты</li>
+        <li>0.34 зубчика чеснока</li>
+        <li>0.17,5 литра воды</li>
+        <li>16.67 миллилитров растительного масла</li>
+        <li>по вкусу соли и перца</li>
+        <li>по вкусу паприки</li>
       </ul>
     </div>
   </div>
@@ -169,14 +174,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .join("")}
     `;
 
-
-
     document
       .querySelector(".back-btn")
       .addEventListener("click", showCategories);
   }
-
-
 
   showCategories();
 });

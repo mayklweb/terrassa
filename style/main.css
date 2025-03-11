@@ -192,7 +192,7 @@ html {
 .meals-container:not(:first-child){
   padding: 20px 0;
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
 
@@ -283,8 +283,8 @@ html {
   padding: 20px;
 }
 .modal-ingredients {
-  padding: 20px;
-  font-size: 18px;
+  padding: 10px 0px 0px 20px;
+  font-size: 16px;
 }
 .modal-close {
   width: 36px;
@@ -319,6 +319,10 @@ html {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
+  .meals-container:not(:first-child){
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }
 @media only screen and (max-width: 440px) {
   .header-logo {
@@ -348,5 +352,10 @@ html {
   .menu-container {
     grid-template-columns: repeat(1, 1fr);
     gap: 14px;
+  }
+
+  .meals-container:not(:first-child){
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
   }
 }
