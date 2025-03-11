@@ -1,1 +1,352 @@
-@import url(https://fonts.googleapis.com/css2?family=Caramel&family=Cinzel:wght@400..900&family=Dancing+Script:wght@400..700&display=swap);.header,.header.active,.loading,.menu,.menu.open{transition:.4s ease-in-out}a,button{font-size:inherit}body,html,img{height:100%}.header,.loading,.menu,body,html,img{width:100%}.header.active,.loading{z-index:3}.menu-item_btn,.modal-bg{backdrop-filter:blur(10px)}.menu-btn,.menu-item_btn,.modal-ingredients,.modal-name{font-family:Cinzel,sans-serif}*{margin:0;padding:0;box-sizing:border-box}img{object-fit:cover}a{font-family:inherit;text-decoration:none}button{border:none;background-color:transparent;cursor:pointer}.menu-item_btn,.modal-close{color:#fff;border-radius:10px}body,html{font-family:"Dancing Script",sans-serif}.loading{position:fixed;height:100vh;background:#000;color:#fff;display:flex;justify-content:center;align-items:center;font-size:24px}.header,.header-row{background-color:transparent}.container{max-width:100%;margin:0 auto;padding:0 12px}.header{position:absolute;top:0;left:0}.header.active{background-color:#fff;filter:drop-shadow(0 2px 4px rgba(0, 0, 0, .1))}.header-row{padding:10px 0;display:flex;align-items:center;justify-content:space-between}.header-btn,.menu-btn{height:50px;display:flex;background-color:#f7931f}.header-logo{width:180px}.header-action{display:flex;gap:12px;align-items:center;justify-content:space-between}.menu-btn{width:90px;font-size:14px;color:#fff;align-items:center;justify-content:center}.header-btn{width:50px;align-items:center;justify-content:center}.menu,.menu.open{position:fixed;left:0;z-index:2;background-color:#fff}.header-btn svg{width:22px;height:22px}.menu{height:100%;bottom:100%;overflow-y:scroll}.menu-img,.menu-item{width:100%;position:relative}.menu.open{width:100%;height:calc(100% - 80px);bottom:0}.menu-container{padding:20px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.menu-item{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}.menu-img{height:90%}.menu-item_btn{display:flex;padding:10px;align-items:center;justify-content:center;background-color:transparent;font-size:18px;position:absolute;right:0;bottom:0;transition:.2s ease-in-out}.modal,.modal-bg{position:fixed;top:0;left:0;height:100%;transition:.2s ease-in-out;width:100%}.menu-name{width:100%;margin-top:10px;font-size:22px}.modal{z-index:4;display:flex;align-items:center;justify-content:center}.modal.hidden{display:none}.modal-bg{background:rgba(0,0,0,.5)}.modal-content{width:100%;max-width:360px;background-color:#fff;position:relative;z-index:5}.modal-img{width:100%;display:flex;justify-content:center;align-items:center;image-orientation:flip;place-items:center;object-fit:contain}.modal-text{padding:20px}.modal-ingredients{padding:20px;font-size:18px}.modal-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;position:absolute;top:10px;right:10px;padding:10px;will-change:transform,backdrop-filter;background:rgba(255,255,255,.1)}.modal-close::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;backdrop-filter:blur(20px)}.modal-name{font-size:24px}@media only screen and (max-width:900px){.menu-container{grid-template-columns:repeat(2,1fr);gap:14px}}@media only screen and (max-width:440px){.header-logo{width:140px;height:50px}.header-btn,.menu-btn{height:40px;display:flex;background-color:#f7931f}.menu-btn{width:70px;color:#fff;align-items:center;justify-content:center}.header-btn{width:40px;align-items:center;justify-content:center}.menu.open{height:calc(100% - 70px)}.menu-container{grid-template-columns:repeat(1,1fr);gap:14px}}
+@import url(https://fonts.googleapis.com/css2?family=Caramel&family=Cinzel:wght@400..900&family=Dancing+Script:wght@400..700&display=swap);
+.header,
+.header.active,
+.loading,
+.menu,
+.menu.open {
+  transition: 0.4s ease-in-out;
+}
+a,
+button {
+  font-size: inherit;
+}
+body,
+html,
+img {
+  height: 100%;
+}
+.header,
+.loading,
+.menu,
+body,
+html,
+img {
+  width: 100%;
+}
+.header.active,
+.loading {
+  z-index: 3;
+}
+.menu-item_btn,
+.modal-bg {
+  backdrop-filter: blur(10px);
+}
+.menu-btn,
+.menu-item_btn,
+.modal-ingredients,
+.modal-name {
+  font-family: Cinzel, sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  object-fit: cover;
+}
+a {
+  font-family: inherit;
+  text-decoration: none;
+}
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.menu-item_btn,
+.modal-close {
+  color: #fff;
+  border-radius: 10px;
+}
+body,
+html {
+  font-family: "Dancing Script", sans-serif;
+}
+.loading {
+  position: fixed;
+  height: 100vh;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+.header,
+.header-row {
+  background-color: transparent;
+}
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.header.active {
+  background-color: #fff;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+.header-row {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-btn,
+.menu-btn {
+  height: 50px;
+  display: flex;
+  background-color: #f7931f;
+}
+.header-logo {
+  width: 180px;
+}
+.header-action {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu-btn {
+  width: 90px;
+  font-size: 14px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+}
+.header-btn {
+  width: 50px;
+  align-items: center;
+  justify-content: center;
+}
+.menu,
+.menu.open {
+  position: fixed;
+  left: 0;
+  z-index: 2;
+  background-color: #fff;
+}
+.header-btn svg {
+  width: 22px;
+  height: 22px;
+}
+.menu {
+  height: 100%;
+  bottom: 100%;
+  overflow-y: scroll;
+}
+.menu-img,
+.menu-item {
+  width: 100%;
+  position: relative;
+}
+.menu.open {
+  width: 100%;
+  height: calc(100% - 80px);
+  bottom: 0;
+}
+.menu-container {
+  padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.category-item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.category-img {
+  width: 100%;
+  height: 100%;
+}
+
+.category-name {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  backdrop-filter: blur(3px);
+  color: white;
+  font-size: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.meals-container{
+
+}
+
+.meals-container:not(:first-child){
+  padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+
+.meal-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meal-item{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.meal-title{
+  font-size: 24px;
+}
+
+.meal-img{
+  width: 100%;
+  height: 85%;
+  object-fit: cover;
+  position: relative;
+}
+
+
+
+.meal-name{
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.meal-item_btn {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: transparent;
+  font-size: 18px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transition: 0.2s ease-in-out;
+}
+
+
+.modal,
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: 0.2s ease-in-out;
+  width: 100%;
+}
+
+.modal {
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal.hidden {
+  display: none;
+}
+.modal-bg {
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  width: 100%;
+  max-width: 360px;
+  background-color: #fff;
+  position: relative;
+  z-index: 5;
+}
+.modal-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  image-orientation: flip;
+  place-items: center;
+  object-fit: contain;
+}
+.modal-text {
+  padding: 20px;
+}
+.modal-ingredients {
+  padding: 20px;
+  font-size: 18px;
+}
+.modal-close {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  will-change: transform, backdrop-filter;
+  background: rgba(255, 255, 255, 0.1);
+}
+.modal-close::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backdrop-filter: blur(20px);
+}
+.modal-name {
+  font-size: 24px;
+}
+
+
+@media only screen and (max-width: 900px) {
+  .menu-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .header-logo {
+    width: 140px;
+    height: 50px;
+  }
+  .header-btn,
+  .menu-btn {
+    height: 40px;
+    display: flex;
+    background-color: #f7931f;
+  }
+  .menu-btn {
+    width: 70px;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-btn {
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+  .menu.open {
+    height: calc(100% - 70px);
+  }
+  .menu-container {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 14px;
+  }
+}

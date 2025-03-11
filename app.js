@@ -1,14 +1,119 @@
-document.addEventListener("DOMContentLoaded",function(){const images=document.querySelectorAll("html img");const loadingScreen=document.querySelector(".loading");const homePage=document.querySelector(".wrapper");let loadedImages=0;images.forEach((img)=>{const tempImg=new Image();tempImg.src=img.src;tempImg.onload=()=>{loadedImages++;if(loadedImages===images.length){loadingScreen.style.display="none";homePage.classList.remove("hidden")}}});let data=[{id:1,img:"./foods/61.webp",name:"Lentil soup"},{id:1,img:"./foods/62.webp",name:"Tschetschenisch-Suppe"},{id:1,img:"./foods/63.webp",name:"Чечивичний суп"},{id:1,img:"./foods/64.webp",name:""},{id:1,img:"./foods/65.webp",name:""},{id:1,img:"./foods/66.webp",name:""},{id:1,img:"./foods/67.webp",name:""},{id:1,img:"./foods/68.webp",name:""},{id:1,img:"./foods/70.webp",name:""},{id:1,img:"./foods/71.webp",name:""},{id:1,img:"./foods/72.webp",name:""},{id:1,img:"./foods/73.webp",name:""},{id:1,img:"./foods/74.webp",name:""},];const closeIcon='<svg xmlns="http://www.w3.org/2000/svg"  version="1.1" x="0px" y="0px" width="24" height="24" viewBox="0 0 122.878 122.88" fill="#ffffff" enable-background="new 0 0 122.878 122.88" xml:space="preserve"><g><path d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z"/></g></svg>';const menuBtn=document.querySelector(".menu-btn");const menu=document.querySelector(".menu");const menuContainer=document.querySelector(".menu-container");const header=document.querySelector(".header");menuBtn.addEventListener("click",()=>{menuBtn.innerHTML=menu.classList.contains("open")?"Menu":closeIcon;menu.classList.toggle("open");header.classList.toggle("active")});let imgDivs=data.map((item)=>{return `
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("html img");
+  const loadingScreen = document.querySelector(".loading");
+  const homePage = document.querySelector(".wrapper");
+  const categoryContainer = document.querySelector(".menu-container");
+  const menuContainer = document.querySelector(".meals-container");
+  const menuBtn = document.querySelector(".menu-btn");
+  const menu = document.querySelector(".menu");
+  const header = document.querySelector(".header");
+
+  let loadedImages = 0;
+  images.forEach((img) => {
+    const tempImg = new Image();
+    tempImg.src = img.src;
+    tempImg.onload = () => {
+      loadedImages++;
+      if (loadedImages === images.length) {
+        loadingScreen.style.display = "none";
+        homePage.classList.remove("hidden");
+      }
+    };
+  });
+
+  let categories = [
+    { name: "Salads", img: "./foods/61.webp" },
+    { name: "Soups", img: "./foods/62.webp" },
+    { name: "Grill", img: "./foods/63.webp" },
+  ];
+
+  let data = [
+    { id: 1, img: "./foods/61.webp", name: "Lentil Soup", category: "Soups" },
+    { id: 2, img: "./foods/62.webp", name: "Tomato Soup", category: "Soups" },
+    { id: 3, img: "./foods/63.webp", name: "Caesar Salad", category: "Salads" },
+    { id: 4, img: "./foods/64.webp", name: "Greek Salad", category: "Salads" },
+    { id: 5, img: "./foods/65.webp", name: "Chicken Grill", category: "Grill" },
+    { id: 6, img: "./foods/66.webp", name: "Beef Steak", category: "Grill" },
+  ];
+
+  const closeIcon =
+    '<svg xmlns="http://www.w3.org/2000/svg"  version="1.1" x="0px" y="0px" width="24" height="24" viewBox="0 0 122.878 122.88" fill="#ffffff" enable-background="new 0 0 122.878 122.88" xml:space="preserve"><g><path d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z"/></g></svg>';
+
+  menuBtn.addEventListener("click", () => {
+    menuBtn.innerHTML = menu.classList.contains("open") ? "Menu" : closeIcon;
+    menu.classList.toggle("open");
+    header.classList.toggle("active");
+  });
+
+  let imgDivs = categories
+    .map((item) => {
+      return `
   <div class="menu-item">
     <div class='menu-img'>
       <img src="${item.img}" alt="${item.name}" />
-      <button class="menu-item_btn" data-id="${item.id}">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
-      </button>
-    </div>
-    <p class="menu-name">${item.name}</p>
+      </div>
+      <p class="menu-name">${item.name}</p>
   </div>
-`}).join("");menuContainer.innerHTML=imgDivs;menuContainer.addEventListener("click",(event)=>{const button=event.target.closest(".menu-item_btn");if(button){const itemId=button.getAttribute("data-id");const selectedItem=data.find((item)=>item.id==itemId);if(selectedItem){handleOpen(selectedItem)}}});function handleOpen(item){let modal=document.createElement("div");modal.classList.add("modal");modal.innerHTML=`
+`;
+    })
+    .join("");
+
+  categoryContainer.innerHTML = imgDivs;
+  categoryContainer.addEventListener("click", (event) => {
+    const button = event.target.closest(".menu-item_btn");
+    if (button) {
+      const itemId = button.getAttribute("data-id");
+      const selectedItem = data.find((item) => item.id == itemId);
+      if (selectedItem) {
+        handleOpen(selectedItem);
+      }
+    }
+  });
+
+  function showCategories() {
+    categoryContainer.style.display = "grid";
+    categoryContainer.innerHTML = categories
+      .map(
+        (item) => `
+       <div class="category-item" data-category="${item.name}">
+    <div class='category-img'>
+      <img src="${item.img}" alt="${item.name}" />
+      </div>
+      <p class="category-name">${item.name}</p>
+  </div>
+    `
+      )
+      .join("");
+
+    // Show category section
+    menuContainer.innerHTML = ""; // Clear meals
+
+    // Click event for each category
+    document.querySelectorAll(".category-item").forEach((item) => {
+      item.addEventListener("click", function () {
+        const selectedCategory = this.getAttribute("data-category");
+        showMeals(selectedCategory);
+      });
+    });
+  }
+
+  menuContainer.addEventListener("click", (event) => {
+    const button = event.target.closest(".meal-item_btn");
+    if (button) {
+      console.log(button);
+      
+      const itemId = button.getAttribute("data-id");
+      const selectedItem = data.find((item) => item.id == itemId);
+      if (selectedItem) {
+        handleOpen(selectedItem);
+      }
+    }
+  });
+
+  function handleOpen(item) {
+    let modal = document.createElement("div");
+    modal.classList.add("modal");
+    modal.innerHTML = `
 <div class="modal">
   <div class="modal-bg"></div>
   <div class="modal-content">
@@ -28,6 +133,50 @@ document.addEventListener("DOMContentLoaded",function(){const images=document.qu
     </div>
   </div>
 </div>
-`;homePage.appendChild(modal);modal.querySelector(".modal-close").addEventListener("click",()=>{console.log(modal.querySelector(".modal-close"));modal.remove()});modal.querySelector(".modal-bg").addEventListener("click",()=>{modal.remove()})}});function debounce(func,delay){let timeout;return function(...args){clearTimeout(timeout);timeout=setTimeout(()=>func(...args),delay)}}
-function handleScroll(){console.log("User scrolled at:",window.scrollY)}
-window.addEventListener("scroll",debounce(handleScroll,200))
+`;
+    homePage.appendChild(modal);
+    modal.querySelector(".modal-close").addEventListener("click", () => {
+      console.log(modal.querySelector(".modal-close"));
+      modal.remove();
+    });
+  }
+
+  function showMeals(category) {
+    const filteredMeals = data.filter((item) => item.category === category);
+
+    categoryContainer.style.display = "none";
+
+    menuContainer.innerHTML = `
+    <div class="meal-head">
+    <h3 class="meal-title">${category}</h3>
+    <button class="back-btn">Back</button>
+    </div>
+      ${filteredMeals
+        .map(
+          (item) => `
+      <div class="meal-item">
+       
+          <div class='meal-img'>
+      <img src="${item.img}" alt="${item.name}" />
+      <button class="meal-item_btn" data-id="${item.id}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+        <p class="meal-name">${item.name}</p>
+      </div>
+    `
+        )
+        .join("")}
+    `;
+
+
+
+    document
+      .querySelector(".back-btn")
+      .addEventListener("click", showCategories);
+  }
+
+
+
+  showCategories();
+});
