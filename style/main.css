@@ -185,43 +185,40 @@ html {
   justify-content: center;
 }
 
-.meals-container{
-
+.meals-container {
 }
 
-.meals-container:not(:first-child){
+.meals-container:not(:first-child) {
   padding: 20px 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
 
-.meal-head{
+.meal-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.meal-item{
+.meal-item {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-.meal-title{
+.meal-title {
   font-size: 24px;
 }
 
-.meal-img{
+.meal-img {
   width: 100%;
   height: 85%;
   object-fit: cover;
   position: relative;
 }
 
-
-
-.meal-name{
+.meal-name {
   font-size: 18px;
   margin-top: 10px;
 }
@@ -240,34 +237,39 @@ html {
   transition: 0.2s ease-in-out;
 }
 
-
-.modal,
-.modal-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  transition: 0.2s ease-in-out;
-  width: 100%;
-}
-
 .modal {
   z-index: 4;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: +100%;
+  left: 0;
+  height: 100%;
+  transition: 0.3s ease-in-out;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
 }
-.modal.hidden {
-  display: none;
+.modal.active {
+  top: 0;
+  opacity: 1;
+  visibility: visible;
 }
 .modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: 0.4s ease-in-out;
+  width: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
 .modal-content {
   width: 100%;
   max-width: 360px;
   background-color: #fff;
-  position: relative;
+  position: absolute;
   z-index: 5;
 }
 .modal-img {
@@ -298,7 +300,10 @@ html {
   padding: 10px;
   will-change: transform, backdrop-filter;
   background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden; /* Pseudo-elementning tashqariga chiqishini oldini olish */
 }
+
 .modal-close::before {
   content: "";
   position: absolute;
@@ -308,18 +313,25 @@ html {
   height: 100%;
   border-radius: 10px;
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); /* Safari va eski brauzerlar uchun */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.15
+  ); /* Fallback: agar backdrop-filter ishlamasa */
 }
+
 .modal-name {
   font-size: 24px;
 }
-
 
 @media only screen and (max-width: 900px) {
   .menu-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
-  .meals-container:not(:first-child){
+  .meals-container:not(:first-child) {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
@@ -354,7 +366,7 @@ html {
     gap: 14px;
   }
 
-  .meals-container:not(:first-child){
+  .meals-container:not(:first-child) {
     grid-template-columns: repeat(1, 1fr);
     gap: 10px;
   }

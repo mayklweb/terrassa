@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
     { id: 2, img: "./foods/62.webp", name: "Tomato Soup", category: "Soups" },
     { id: 3, img: "./foods/63.webp", name: "Caesar Salad", category: "Salads" },
     { id: 4, img: "./foods/64.webp", name: "Greek Salad", category: "Salads" },
-    { id: 5, img: "./foods/65.webp", name: "Chicken Grill", category: "Grill" },
     { id: 6, img: "./foods/66.webp", name: "Beef Steak", category: "Grill" },
   ];
 
@@ -41,8 +40,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   menuBtn.addEventListener("click", () => {
     menuBtn.innerHTML = menu.classList.contains("open") ? "Menu" : closeIcon;
-    menu.classList.toggle("open");
-    header.classList.toggle("active");
+    if (
+      menu.classList.contains("open") &&
+      header.classList.contains("active")
+    ) {
+      header.classList.remove("active");
+      menu.classList.remove("open");
+      showCategories();
+    } else {
+      header.classList.add("active");
+      menu.classList.add("open");
+
+      showCategories();
+
+      menuContainer.innerHTML = "";
+    }
   });
 
   let imgDivs = categories
@@ -109,10 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function handleOpen(item) {
-    let modal = document.createElement("div");
-    modal.classList.add("modal");
-    modal.innerHTML = `
-<div class="modal">
+    const modal = document.querySelector(".modal");
+    modal.classList.add("active");
+    let modalContent = `
   <div class="modal-bg"></div>
   <div class="modal-content">
     <div class="modal-img">
@@ -135,12 +146,15 @@ document.addEventListener("DOMContentLoaded", function () {
       </ul>
     </div>
   </div>
-</div>
 `;
-    homePage.appendChild(modal);
+    modal.innerHTML = modalContent;
+
     modal.querySelector(".modal-close").addEventListener("click", () => {
-      console.log(modal.querySelector(".modal-close"));
-      modal.remove();
+      modal.classList.remove("active");
+    });
+
+    modal.querySelector(".modal-bg").addEventListener("click", () => {
+      modal.classList.remove("active");
     });
   }
 
