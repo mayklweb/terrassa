@@ -172,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .map(
           (item) => `
       <div class="meal-item">
-       
           <div class='meal-img'>
       <img src="${item.img}" alt="${item.name}" />
       <button class="meal-item_btn" data-id="${item.id}">

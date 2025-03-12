@@ -97,6 +97,7 @@ html {
   align-items: center;
   justify-content: space-between;
 }
+
 .header-btn,
 .menu-btn {
   height: 50px;
@@ -124,6 +125,16 @@ html {
   align-items: center;
   justify-content: center;
 }
+
+.header-lan{
+  width: 80px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  background: #f7931f;
+  padding: 16px;
+}
+
 .menu,
 .menu.open {
   position: fixed;
@@ -346,6 +357,10 @@ html {
     height: 40px;
     display: flex;
     background-color: #f7931f;
+  }
+  .header-lan{
+    width: 40px;
+    padding: 10px 0px;
   }
   .menu-btn {
     width: 70px;
