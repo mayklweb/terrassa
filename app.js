@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   menuContainer.addEventListener("click", (event) => {
-    const button = event.target.closest(".meal-item_btn");
+    const button = event.target.closest(".meal-img");
     if (button) {
       const itemId = button.getAttribute("data-id");
       const selectedItem = data.find((item) => item.id == itemId);
@@ -172,11 +172,9 @@ document.addEventListener("DOMContentLoaded", function () {
         .map(
           (item) => `
       <div class="meal-item">
-          <div class='meal-img'>
+          <div class='meal-img' data-id="${item.id}">
       <img src="${item.img}" alt="${item.name}" />
-      <button class="meal-item_btn" data-id="${item.id}">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
-      </button>
+   
     </div>
         <p class="meal-name">${item.name}</p>
       </div>
